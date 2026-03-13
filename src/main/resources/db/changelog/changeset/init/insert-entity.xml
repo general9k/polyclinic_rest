@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert_roles" author="general9k">
+        <insert tableName="roles">
+            <column name="id">1b9e0f00-8e3b-4f2c-9c4e-1b2f7b8a1234</column>
+            <column name="name">ADMIN</column>
+        </insert>
+        <insert tableName="roles">
+            <column name="id">5e110f20-91af-47bb-95e6-2f8cd9a4e890</column>
+            <column name="name">MODERATOR</column>
+        </insert>
+        <insert tableName="roles">
+            <column name="id">b1dd1e10-4f92-4a61-8d71-9c1ab3d5c567</column>
+            <column name="name">USER</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert_diagnose" author="general9k">
+        <insert tableName="diagnosis">
+            <column name="name">Острая респираторная инфекция</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Хронический бронхит</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Гипертоническая болезнь</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Сахарный диабет 2 типа</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Инсульт</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Астма</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Пневмония</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Ожог первой степени</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Артрит</column>
+        </insert>
+        <insert tableName="diagnosis">
+            <column name="name">Мигрень</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert_symptoms" author="general9k">
+        <insert tableName="symptom">
+            <column name="name">Кашель</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Лихорадка</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Одышка</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Головная боль</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Тошнота</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Рвота</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Боль в животе</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Озноб</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Боль в груди</column>
+        </insert>
+        <insert tableName="symptom">
+            <column name="name">Слабость</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert_medicines" author="general9k">
+        <insert tableName="medicine">
+            <column name="name">Парацетамол</column>
+            <column name="measuring">500 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Тошнота, головная боль</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Ибупрофен</column>
+            <column name="measuring">200 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Боль в животе, головокружение</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Амоксициллин</column>
+            <column name="measuring">250 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Высыпания на коже, тошнота</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Ципрофлоксацин</column>
+            <column name="measuring">500 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Головная боль, диарея</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Лоратадин</column>
+            <column name="measuring">10 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Сухость во рту, головная боль</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Диклофенак</column>
+            <column name="measuring">25 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Боль в животе, головокружение</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Метформин</column>
+            <column name="measuring">500 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Тошнота, диарея</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Флуоксетин</column>
+            <column name="measuring">20 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Тревожность, бессонница</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Клавулановая кислота</column>
+            <column name="measuring">125 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Аллергические реакции, головная боль</column>
+        </insert>
+        <insert tableName="medicine">
+            <column name="name">Сибутрамин</column>
+            <column name="measuring">10 мг</column>
+            <column name="method">Перорально</column>
+            <column name="side_effects">Тахикардия, головная боль</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert_test_data_users" author="general9k">
+        <!-- ============ АДРЕСА (уникальные для каждого пользователя) ============ -->
+        <insert tableName="address">
+            <column name="id">11111111-1111-4111-8111-111111111111</column>
+            <column name="city">Москва</column>
+            <column name="street">ул. Ленина</column>
+            <column name="house">10</column>
+            <column name="apartment">25</column>
+        </insert>
+        <insert tableName="address">
+            <column name="id">22222222-2222-4222-8222-222222222222</column>
+            <column name="city">Ярославль</column>
+            <column name="street">пр. Октября</column>
+            <column name="house">55</column>
+            <column name="apartment">12</column>
+        </insert>
+        <insert tableName="address">
+            <column name="id">33333333-3333-4333-8333-333333333333</column>
+            <column name="city">Санкт-Петербург</column>
+            <column name="street">Невский проспект</column>
+            <column name="house">28</column>
+            <column name="apartment">8</column>
+        </insert>
+        <insert tableName="address">
+            <column name="id">44444444-4444-4444-8444-444444444444</column>
+            <column name="city">Казань</column>
+            <column name="street">ул. Баумана</column>
+            <column name="house">15</column>
+            <column name="apartment">42</column>
+        </insert>
+        <insert tableName="address">
+            <column name="id">55555555-5555-4555-8555-555555555555</column>
+            <column name="city">Екатеринбург</column>
+            <column name="street">ул. Малышева</column>
+            <column name="house">33</column>
+            <column name="apartment">77</column>
+        </insert>
+
+        <!-- ============ ПАСПОРТА (уникальные для каждого пользователя) ============ -->
+        <insert tableName="passport">
+            <column name="id">66666666-6666-4666-8666-666666666666</column>
+            <column name="series">4501</column>
+            <column name="number">123456</column>
+            <column name="code">770-001</column>
+            <column name="issue_date" value="2015-06-15 10:00:00"/>
+        </insert>
+        <insert tableName="passport">
+            <column name="id">77777777-7777-4777-8777-777777777777</column>
+            <column name="series">7802</column>
+            <column name="number">654321</column>
+            <column name="code">780-045</column>
+            <column name="issue_date" value="2018-03-20 14:30:00"/>
+        </insert>
+        <insert tableName="passport">
+            <column name="id">88888888-8888-4888-8888-888888888888</column>
+            <column name="series">5010</column>
+            <column name="number">987654</column>
+            <column name="code">760-022</column>
+            <column name="issue_date" value="2020-11-05 09:15:00"/>
+        </insert>
+        <insert tableName="passport">
+            <column name="id">99999999-9999-4999-8999-999999999999</column>
+            <column name="series">9205</column>
+            <column name="number">111222</column>
+            <column name="code">160-088</column>
+            <column name="issue_date" value="2019-07-12 11:45:00"/>
+        </insert>
+        <insert tableName="passport">
+            <column name="id">aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa</column>
+            <column name="series">1234</column>
+            <column name="number">555666</column>
+            <column name="code">165-099</column>
+            <column name="issue_date" value="2021-02-28 16:20:00"/>
+        </insert>
+
+        <!-- ============ ПОЛЬЗОВАТЕЛИ ============ -->
+
+        <!-- Врач-терапевт -->
+        <insert tableName="users">
+            <column name="id">bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb</column>
+            <column name="username">doctor.petrov</column>
+            <column name="password">$2a$10$B6fiQkEdYlfqfcVKztGwBuGXBdeaSbX0.alrolg2U2bMGYxmDlLiG</column>
+            <column name="last_name">Петров</column>
+            <column name="first_name">Иван</column>
+            <column name="patronymic">Сергеевич</column>
+            <column name="phone_number">+79001112233</column>
+            <column name="medical_number">MED-001-2024</column>
+            <column name="position">Врач-терапевт</column>
+            <column name="description">Стаж работы 10 лет. Специализация: общие заболевания.</column>
+            <column name="education">МГМУ им. Сеченова, лечебное дело</column>
+            <column name="email">petrov@clinic.local</column>
+            <column name="role_id">5e110f20-91af-47bb-95e6-2f8cd9a4e890</column>
+            <column name="address" value="11111111-1111-4111-8111-111111111111"/>
+            <column name="passport" value="66666666-6666-4666-8666-666666666666"/>
+        </insert>
+
+        <!-- Пациент 1 -->
+        <insert tableName="users">
+            <column name="id">cccccccc-cccc-4ccc-8ccc-cccccccccccc</column>
+            <column name="username">patient.sidorova</column>
+            <column name="password">$2a$10$B6fiQkEdYlfqfcVKztGwBuGXBdeaSbX0.alrolg2U2bMGYxmDlLiG</column>
+            <column name="last_name">Сидорова</column>
+            <column name="first_name">Анна</column>
+            <column name="patronymic">Дмитриевна</column>
+            <column name="phone_number">+79004445566</column>
+            <column name="medical_number">PAT-1024-2024</column>
+            <column name="role_id">b1dd1e10-4f92-4a61-8d71-9c1ab3d5c567</column>
+            <column name="address" value="22222222-2222-4222-8222-222222222222"/>
+            <column name="passport" value="77777777-7777-4777-8777-777777777777"/>
+        </insert>
+
+        <!-- Врач-кардиолог -->
+        <insert tableName="users">
+            <column name="id">dddddddd-dddd-4ddd-8ddd-dddddddddddd</column>
+            <column name="username">doctor.ivanova</column>
+            <column name="password">$2a$10$B6fiQkEdYlfqfcVKztGwBuGXBdeaSbX0.alrolg2U2bMGYxmDlLiG</column>
+            <column name="last_name">Иванова</column>
+            <column name="first_name">Елена</column>
+            <column name="patronymic">Александровна</column>
+            <column name="phone_number">+79007778899</column>
+            <column name="medical_number">MED-002-2024</column>
+            <column name="position">Врач-кардиолог</column>
+            <column name="description">Высшая категория. Специализация: лечение гипертонии и аритмии.</column>
+            <column name="education">РНИМУ им. Пирогова, кардиология</column>
+            <column name="email">ivanova@clinic.local</column>
+            <column name="role_id">5e110f20-91af-47bb-95e6-2f8cd9a4e890</column>
+            <column name="address" value="33333333-3333-4333-8333-333333333333"/>
+            <column name="passport" value="88888888-8888-4888-8888-888888888888"/>
+        </insert>
+
+        <!-- Пациент 2 -->
+        <insert tableName="users">
+            <column name="id">eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee</column>
+            <column name="username">patient.volkov</column>
+            <column name="password">$2a$10$B6fiQkEdYlfqfcVKztGwBuGXBdeaSbX0.alrolg2U2bMGYxmDlLiG</column>
+            <column name="last_name">Волков</column>
+            <column name="first_name">Дмитрий</column>
+            <column name="patronymic">Алексеевич</column>
+            <column name="phone_number">+79003334455</column>
+            <column name="medical_number">PAT-2048-2024</column>
+            <column name="role_id">b1dd1e10-4f92-4a61-8d71-9c1ab3d5c567</column>
+            <column name="address" value="44444444-4444-4444-8444-444444444444"/>
+            <column name="passport" value="99999999-9999-4999-8999-999999999999"/>
+        </insert>
+
+        <!-- Медсестра -->
+        <insert tableName="users">
+            <column name="id">ffffffff-ffff-4fff-8fff-ffffffffffff</column>
+            <column name="username">nurse.sokolova</column>
+            <column name="password">$2a$10$B6fiQkEdYlfqfcVKztGwBuGXBdeaSbX0.alrolg2U2bMGYxmDlLiG</column>
+            <column name="last_name">Соколова</column>
+            <column name="first_name">Мария</column>
+            <column name="patronymic">Игоревна</column>
+            <column name="phone_number">+79006667788</column>
+            <column name="medical_number">MED-003-2024</column>
+            <column name="position">Медицинская сестра</column>
+            <column name="description">Процедурный кабинет, прием анализов.</column>
+            <column name="education">Медицинский колледж №5, сестринское дело</column>
+            <column name="email">sokolova@clinic.local</column>
+            <column name="role_id">5e110f20-91af-47bb-95e6-2f8cd9a4e890</column>
+            <column name="address" value="55555555-5555-4555-8555-555555555555"/>
+            <column name="passport" value="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

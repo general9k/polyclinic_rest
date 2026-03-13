@@ -1,0 +1,296 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add_table_role" author="general9k">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="roles">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pkey"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp(0)" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_address" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="address"/>
+            </not>
+        </preConditions>
+        <createTable tableName="address">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_pkey"/>
+            </column>
+            <column name="city" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="house" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apartment" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_passport" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="passport"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="passport">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="passport_pkey"/>
+            </column>
+            <column name="series" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issue_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_symptom" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="symptom"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="symptom">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="symptom_pkey"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_diagnosis" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="diagnosis"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="diagnosis">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="diagnosis_pkey"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_medicine" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="medicine"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="medicine">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="medicine_pkey"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="method" type="text"/>
+            <column name="measuring" type="varchar(50)"/>
+            <column name="side_effects" type="text"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_users" author="general9k">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="users">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="username" type="varchar(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="uuid">
+                <constraints nullable="false"
+                             referencedTableName="roles"
+                             referencedColumnNames="id"
+                             foreignKeyName="fk_users_roles"/>
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patronymic" type="varchar(50)"/>
+            <column name="phone_number" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="medical_number" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="position" type="varchar(100)"/>
+            <column name="description" type="varchar"/>
+            <column name="education" type="varchar"/>
+            <column name="email" type="varchar"/>
+            <column name="photo_url" type="varchar"/>
+            <column name="address" type="uuid">
+                <constraints foreignKeyName="fk_user_address"
+                             referencedTableName="address"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="passport" type="uuid">
+                <constraints foreignKeyName="fk_user_passport"
+                             referencedTableName="passport"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_reception" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="reception"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="reception">
+            <column defaultValueComputed="uuid_generate_v4()" name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reception_pkey"/>
+            </column>
+            <column name="date_of_appointment" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_inspection" type="timestamp"/>
+            <column name="was_carried_out" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prescription" type="text"/>
+            <column name="id_worker" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_worker_user"
+                             referencedTableName="users"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="id_patient" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_patient_user"
+                             referencedTableName="users"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_table_reception_symptom" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="reception_symptom"/>
+            </not>
+        </preConditions>
+        <createTable tableName="reception_symptom">
+            <column name="reception_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_symptom_reception"
+                             referencedTableName="reception"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="symptom_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_symptom_symptom"
+                             referencedTableName="symptom"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="reception_symptom"
+                       columnNames="reception_id, symptom_id"
+                       constraintName="pk_reception_symptom"/>
+    </changeSet>
+
+    <changeSet id="add_table_reception_diagnosis" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="reception_diagnosis"/>
+            </not>
+        </preConditions>
+        <createTable tableName="reception_diagnosis">
+            <column name="reception_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_diagnosis_reception"
+                             referencedTableName="reception"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="diagnosis_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_diagnosis_diagnosis"
+                             referencedTableName="diagnosis"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="reception_diagnosis"
+                       columnNames="reception_id, diagnosis_id"
+                       constraintName="pk_reception_diagnosis"/>
+    </changeSet>
+
+    <changeSet id="add_table_reception_medicine" author="general9k">
+        <preConditions>
+            <not>
+                <tableExists tableName="reception_medicine"/>
+            </not>
+        </preConditions>
+        <createTable tableName="reception_medicine">
+            <column name="reception_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_medicine_reception"
+                             referencedTableName="reception"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="medicine_id" type="uuid">
+                <constraints nullable="false"
+                             foreignKeyName="fk_reception_medicine_medicine"
+                             referencedTableName="medicine"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="reception_medicine"
+                       columnNames="reception_id, medicine_id"
+                       constraintName="pk_reception_medicine"/>
+    </changeSet>
+
+    <changeSet id="add_unique_constraint_passport" author="general9k">
+        <addUniqueConstraint tableName="users" columnNames="passport" constraintName="uk_users_passport"/>
+    </changeSet>
+
+</databaseChangeLog>

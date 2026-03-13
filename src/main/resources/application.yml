@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: abitur
+  datasource:
+    url: jdbc:postgresql://localhost:5432/polyclinic
+    username: postgres
+    password: postgres
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/polyclinic
+    user: postgres
+    password: postgres
+    change-log: db/changelog/master.xml
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  security:
+    jwt:
+      secret-key: aB3nK9xQ2mL8vR7pY4sT6wZ1cX0eU5jH8gN2fV7bD4rE9qW3tY6uI1oP5aS8dF2
+      expiration-ms: 86400000
+  web:
+    resources:
+      add-mappings: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    try-it-out-enabled: true
+    request-snippets:
+      enabled: true
+  packages-to-scan: ru.rodionov.controller
+  paths-to-match: /api/v1/**
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
