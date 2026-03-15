@@ -56,6 +56,7 @@ public interface DoctorControllerApi extends GeneralApi {
             @ApiResponse(responseCode = "404", description = "Врач не найден",
                     content = @Content(schema = @Schema(implementation = ServerError.class)))
     })
+    @RequestMapping(value = "/doctors/{id}", method = RequestMethod.GET)
     ResponseEntity<UserDTO> getDoctor(
             @Parameter(description = "ID врача", example = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11", required = true)
             @PathVariable UUID id
